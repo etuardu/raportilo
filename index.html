@@ -6,6 +6,8 @@
   <script src="main.js"></script>
   <style>
     body { background-color: #222; color: #ccc; }
+    div, p { margin: 1em; font-size: 2em; }
+    #generi { padding: .5em; font-size: 1em; }
   </style>
 </head>
 <body>
@@ -252,12 +254,14 @@ $numer = du|tri|kvar|kvin|ses|sep|ok|naŭ;
   </textarea>
   <div
     id="output"
-    style="margin:1em; font-size:1.5em;"
   ></div>
   <p>
-    <input type="button" value="Generi novan"
+    <input
+      id="generi"
+      type="button"
+      value="Generi novan"
       onclick="generate()"
-    >
+    />
   </p>
 </body>
 </html>
