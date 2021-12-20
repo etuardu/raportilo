@@ -21,22 +21,27 @@
 
 $s = \$iam $okazis $arangxo.
      La aŭspiciantoj estis la $gravulo
-     [^, la $gravulo,] kaj la $gravulo
-     ^[, (
-       kies salutparolo legeblis en programlibro
-         (elstare|senerare|mise|mis^|arte|oportune|maloportune|senpage|debile)
-         tradukita de (
-           Pavol Petrik|Matthieu Desplantes|iu hazardulo|iu ebriulo
-           |iu fremdulo|iu volontulo [de Tuluzo|de E@I|de Tejo]|iu tokiponisto
-           |mia kuzo|iu senhejmulo
-         )
+     [^, la $gravulo,] kaj la $gravulo,
+     (
+       kies salutparolo legeblis en programlibro (
+         elstare|senerare|mise|mis^|arte|oportune|maloportune|senpage|debile|hontinde
+         |lastsekunde|erarplene|mise-dise|terure|pene|detaleme|atenteme|zorgeme
+         |laŭdinde|maldankinde|bedaŭrinde|aŭdace|malsobre|fantazie|poezie|ŝvite
+         |sufere|lace
+       ) tradukita de (
+         Pavol Petrik|Matthieu Desplantes|iu hazardulo|iu ebriulo
+         |iu fremdulo|iu volontulo [de Tuluzo|de E@I|de Tejo]|iu tokiponisto
+         |mia kuzo|iu senhejmulo
+       )
        | kiu (bonkore|malavare|trafe|ĝentile|kortuŝe) (omaĝis|regalis|surprizis) ĉiun partoprenanton per donacita
-         (kolbaso|hundido|alumeto|ŝtrumpeto|vodko-botelo|maĉgumo|$vestajx^o)
-         en kongressako
+         (
+           kolbaseto|hundido|alumeto|ŝtrumpeto|vodko-botelo|maĉgumo|$vestajx^o
+           |dentopikilo|ŝmirebla fromaĝo|$legom^o|$legom^a bonbono
+         ) en kongressako
        | kiu dum la malfermo alparolis la partoprenantojn
          (kun ($emocia|maltaŭga|amuza|ebria|iom fuŝa|nobla|ridinda|ekzotika) akĉento|en (nekomprenebla|neekzistanta|ofenda|imperiisma) sed $emocia_adverbe lingvo)
        | kiu dum la (solena malfermo|tuta tempo|komuna foto|lasta nokto) estis en $ejo
-     )].
+     )^.
      La etoso estis [$pomp^e] $eo_etos^a.
      Okazis $emocia_adverbe prelego pri $temo
      [^, kiu fakte estis jam okazinta $je_horo kiam ĉiuj estis en $ejo,]
@@ -60,22 +65,32 @@ $s = \$iam $okazis $arangxo.
        |la longe sopirata|neantaŭvidita|^, laŭ programo,
        |malgraŭ alia indiko en programtabulo
      ] koncerto de $koncertisto.
-     \[speciale por (novuloj|poloj|beboj|aŭtismuloj|ebriuloj|komencantoj|C-niveluloj)]
+     \[
+       laŭ (
+         onidiroj|anonima ĉeestanto|ĉiuj|mia memoro|mia kompreno
+         |mia scio|mia kuzo|la organiza teamo
+         |$numer [enketitaj|pridemanditaj|hazardaj] partoprenantoj
+       ),
+     ]
+     la muziko estis $fakte $kia_muziko.
+     \(speciale|precipe|ĉefe|aparte) por (
+       novuloj|$popol^oj|beboj|aŭtismuloj|ebriuloj|komencantoj|C-niveluloj
+     )
      estis (oportune|konvene|akurate|profite|taŭge|adekvate|zorgeme) aranĝita kurso pri (
        (
          (barata|skota|ĉina|greka|korea)
-         (ukulelo|fluto|sakŝalmo|tamburo|kuirarto|artiŝoko|basgitaro)
+         (ukulelo|fluto|sakŝalmo|tamburo|kuirarto|($legom|$korpopart)-muzikilo|basgitaro)
        )
        |riparado de (kosmoŝipoj|robotoj|pafiloj|misiloj|tankoj|aviadiloj|okulvitroj)
-       |$viand_best^bredado
+       |$viand_best-bredado
      ) kaj (
-       kantado de hungaraj kantoj
+       kantado de $popol^aj popolkantoj
        | origamio
        | ornamado de (T-ĉemizoj|keksoj|porkidoj|tasoj|rubujoj|vinglasoj|bananoj)
        | tango-dancado
        | ŝakludado
        | guglo-serĉado
-       | ĉeĥaj langorompiloj
+       | $popol^aj langorompiloj
        | ovo-boligado
        | $legom-senŝeligado
        | $viand_best-ĉasado
@@ -95,11 +110,17 @@ $je_horo = je la $numer^a (matene|vespere);
 
 $semajntag = lund|mard|merkred|ĵaŭd|vendred|sabat|dimanĉ;
 $monat = januar|februar|mart|april|maj|juni|juli|aŭgust|septembr|oktobr|novembr|decembr;
+
 $ejo = gufujo|trinkejo|akceptejo|diskejo|necesejo|amasloĝejo|manĝejo|bankuvo
-  |banĉambro|saŭno|ies lito|dormoĉambro|apuda stacidomo|sportejo;
+  |banĉambro|saŭno|ies lito|dormoĉambro|apuda stacidomo|sportejo|aligatorejo
+  |la koridoro;
+
 $kolor = blu|ruĝ|blank|nigr|griz|verd|flav|rozkolor|oranĝkolor|brun;
 
 $kelkaj = [[$numer^cent] $numer^dek] $numer;
+
+$fakte = sincere|fakte|simple|vere|tute|plene|efektive|ĝuste|precize|absolute|ekzakte
+  |strikte|rigore|severe|rekte|sendube|senhezite;
 
 $okazis = eblis [
             agrable|senbedaŭre|trankvile|ĝoje|tutkore|finfine|neatendite
@@ -109,7 +130,7 @@ $okazis = eblis [
           ] okazis
           | estis [$pomp^e] aranĝita;
 
-$pomp = pomp|solen|elstar|luks|impon|bel|grandioz|ceremoni|sobr;
+$pomp = pomp|solen|elstar|luks|impon|bel|grandioz|ceremoni|sobr|eminent;
 $eo_etos = amik|internaci|tutmond|intim|komunum|agrabl|bunt|varm;
 
 $arangxo = (
@@ -140,7 +161,8 @@ $ministrejo = eduko|scienco|esploro|sporto|agrikulturo|industrio|defendo
 
 $gravulposteno = ministro pri \$ministrejo [kaj (
     [Salaj] Kukoj|Meleagroj|Hamakoj|Fritita Fromaĝo|Sunbruniĝo|Burgeroj
-    |Butero|Naskiĝtagaj Festoj|Kristnasko|\$vestajx^oj
+    |Butero|Naskiĝtagaj Festoj|Kristnasko|\$vestajx^oj|Patkukoj|\$legom^oj
+    |Pano|Dormado|Marmelado
   )]
   | prezidanto de ([memstara] regiono|provinco|distrikto|vilaĝaro|Respubliko)
   | reĝo de \$ekzotika_land^o
@@ -157,7 +179,9 @@ $gravulo = [vic^]$gravulposteno $gravulnomo;
 
 $asoci = asoci|organiz|societ|federaci|junular|maljunular|klub;
 
-$popol = german|aŭstr|slovak|ital|franc|rus|hispan|katalun|okcitan;
+$popol = german|aŭstr|slovak|ital|franc|rus|hispan|katalun|okcitan|hungar|alban
+  |sved|norveg|dan|ĉeĥ|ruman|moldav|ukrain|lituan|litov|brit|bulgar|portugal;
+
 $lando = $ekzotika_land^o|$popol^io;
 $landa = $ekzotika_land^a|$popol^a;
 $landan = $ekzotika_land^an|$popol;
@@ -165,9 +189,12 @@ $landan = $ekzotika_land^an|$popol;
 $vestajx = pantalon|ĉapel|ĉemiz|subpantalon|kalzon|ŝtrumpet
   |subĉemiz|kravat|ŝu;
 
+$korpopart = kubut|genu|okul|brak|krur|lip|dent|naz|orel|buŝ|fingr
+  |ventr|stomak|hepat;
+
 $ist = fervojist|finvenkist|malsanulejestrin|jehovatestant
   |murist|lignaĵist|skulptist|purigist|marist|fiŝkaptist
-  |vegan|vegetaran|fruktarian;
+  |vegan|vegetaran|fruktarian|$korpopart-kuracist;
 
 $sxatokup = origami|alkohol;
 
@@ -185,8 +212,14 @@ $temo = la origino de la (
 | $estajx^a klerigado [$grava]
 | (forgesitaj|malaperintaj|eluzitaj|malnovaj) $vestajx^oj;
 
-$temo2 = (senperforta|atentema|alekstera|junulara|eŭropunie-financita)
-  (pluramemo|komunikado|aŭskultado|inkluziveco|komunikado|merkatiko);
+$temo2 = (
+  senperforta|atentema|alekstera|junulara|eŭropunie-financita
+  |neduuma|genroneŭtrala|konsento-bazita|daŭripova|medisubtena
+  |florbrasika
+) (
+  pluramemo|komunikado|aŭskultado|inkluziveco|komunikado|merkatiko
+  |egaleco|interkompreniĝo
+);
 
 $iu_lingvo = iu (
   regiona|loka|triba|tradicia|familia|elpensita
@@ -207,12 +240,21 @@ $estajx = $viand_best | beb | fantom | ŝton | kaktus | frenezul | surdul;
 $grava = kaj ĝia graveco en [\$nord^a] \$ekzotika_land^o;
 
 $koncertisto =
-  La \($kolor^a|$emocia) \$estajx^o | (
+  La \($kolor^a|$emocia|$estajx^a) \$estajx^o | (
     Matthieu Desplantes
     | Ĵomart (kaj|sen) Nataŝa
     | Martin Wiese | La Perdita Generacio | DĴ Gunnar
     | Kimo | JoMo | Manŭel Rovere | Kajto
   ) [kaj La Talpoj];
+
+
+$kia_muziko = orelŝtopiga|paradiza|ŝvitiga|aŭskultebla|aŭskultinda
+  |agrabla|plaĉa|harmonia|sonĝa|nostalgia|ŝatinda|furziga|tro laŭta
+  |mallaŭta|deprima|funebra|evitinda|orelsangiga|entombiga
+  |dissendita en $ejo pro (
+    teknika eraro|miskompreno|ordono de la polico|volo de la organizantoj
+    |entrudiĝo de $popol^aj hakistoj
+  );
 
 $emocia = enorda|[mal^] deca|interesa|rimarkinda|ĝuebla|ridinda
           |entuziasmiga|kuraĝiga|terniga|oscedoraba|mortenuiga
@@ -229,7 +271,7 @@ $viand_best = zebu|meleagr|kok|anser|kolbashund|azen|ĉeval|zebr|arane|fiŝ|kame
   |papag;
 
 $legom = melongen|tomat|kukurb|kukum|citron|kukurbet|brasik|zingibr|akvomelon
-  |ananas|pom|pir|banan;
+  |ananas|pom|pir|banan|artiŝok;
 
 $viand_plado = [
   malilanda|kartvela|antarkta
