@@ -143,15 +143,15 @@ class Polygen {
     )
   }
 
-  visit(symbol) {
-    if (!(symbol in this.table)) throw `Cannot visit undefined symbol ${symbol}`
+  visit(symbol, stack=[]) {
+    if (!(symbol in this.table)) throw `Cannot visit undefined symbol ${symbol}. Stack: ${(stack||['(empty)']).join(' → ')}`
 
     return this.getRandomElement(
       this.table[symbol].split("|")
     ).trim(
     ).replaceAll(
       /\$[\p{L}0-9_]+/ug,
-      s => this.visit(s)
+      s => this.visit(s, [...stack, symbol])
     )
     // https://stackoverflow.com/a/48902765/440172
   }
