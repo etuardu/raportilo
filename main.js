@@ -3,10 +3,9 @@
 class Polygen {
 
   constructor(grammar) {
-    this.table = this.build_table(
-      this.preprocess(
-        grammar
-      )
+    this.to_unfold = []
+    this.compile(
+      grammar
     )
   }
 
@@ -26,6 +25,13 @@ class Polygen {
       if (symbol[0] !== "$") throw `Invalid symbol name: ${symbol}, must start with $`
       if (!content) throw `No content for symbol ${symbol}`
 
+      if (content.includes('>')) this.to_unfold.push(symbol)
+      // the symbol contains some non-terminal to be unfolded,
+      // but we are still building the table. Since we are
+      // parsing the whole grammar here, this is a good time
+      // to take a note about which non-terminals have to be
+      // unfolded once the table will be ready.
+
       t[symbol] = content
 
     })
@@ -35,7 +41,39 @@ class Polygen {
     return t
   }
 
-  preprocess(text) {
+  /**
+   * Overwrite the table value for the given symbol
+   * unfolding the needed symbols.
+   * E.g.:
+   * table['$s'] = 'cat | >$color dog'
+   * table['$color'] = 'black|white'
+   * =>
+   * table['$s'] = 'cat | black dog | white dog'
+   */
+  unfold(symbol) {
+
+    this.table[symbol] = this.table[symbol].split("|").map(
+      s => {
+        if (!s.includes('>')) return s
+        // unfold only the first symbol marked with >.
+        // We will take care about the others later on.
+        return s.replace(
+          /(^.*)(>)(\$[A-z0-9_]+)(.*$)/,
+          (m, g1, g2, g3, g4) => this.table[g3].split("|").map(
+            opt => g1 + opt + g4
+          ).join("|")
+        )
+      }
+    ).join("|")
+
+    if (this.table[symbol].includes('>')) {
+      // recourse until there are something to unfold
+      this.unfold(symbol)
+    }
+
+  }
+
+  compile(text) {
     let groups
 
     // preprocess optional groups in square brakets
@@ -80,7 +118,10 @@ class Polygen {
     }
     text += ";\n" + groups.join(";\n")
 
-    return text
+    this.table = this.build_table(text)
+
+    this.to_unfold.forEach(symbol => this.unfold(symbol))
+
   }
 
   postprocess(text) {
@@ -154,5 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#generi").addEventListener("click", () => {
     display_new(p);
   })
+
+  window.polygen = p;
 
 })
