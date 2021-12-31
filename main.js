@@ -73,7 +73,43 @@ class Polygen {
 
   }
 
+  /**
+   * A simple escape mechanism.
+   * The "&" character is reserved for escaping.
+   * Each character found after a "&" is
+   * translated into its code and another
+   * "&" is appended in order to mark the end
+   * of the escape sequence.
+   * A literal "&" can be obtained using the
+   * sequence "&&".
+   * @example
+   *   escape("Cartoons &(Tom && Gerry&) are nice.")
+   *   // => "Cartoons &40&Tom &38& Gerry&41& are nice."
+   */
+  escape(text) {
+    return text.replaceAll(
+      /\&(.)/g,
+      (m, p1) => "&"+p1.charCodeAt(0)+"&"
+    )
+  }
+  /**
+   * Replace each sequence in the form "&<code>&"
+   * with its corrisponding character.
+   * @example
+   *   unescape("Cartoons &40&Tom &38& Gerry&41& are nice.")
+   *   // => "Cartoons (Tom & Gerry) are nice."
+   */
+  unescape(text) {
+    return text.replaceAll(
+      /\&([0-9]+)\&/g,
+      (m, p1) => String.fromCharCode(p1)
+    )
+  }
+
   compile(text) {
+
+    text = this.escape(text)
+
     let groups
 
     // preprocess optional groups in square brakets
@@ -125,15 +161,17 @@ class Polygen {
   }
 
   postprocess(text) {
-    return text
-    .replaceAll(/\s+/g, " ") // strip multiple spaces
-    .replaceAll(/\s([.,;:?!])/g, "$1") // strip spaces before punctuation
-    .replaceAll( // no-space concatenation with ^
-      /\s*\^\s*/g,
-      ""
-    ).replaceAll( // uppercase letter after backslash
-      /\\\s*([^\s])/g,
-      (m, p1) => p1.toLocaleUpperCase()
+    return this.unescape(
+      text.replaceAll( // strip multiple spaces
+        /\s+/g, " "
+      ).replaceAll( // strip spaces before punctuation
+        /\s([.,;:?!])/g, "$1"
+      ).replaceAll( // no-space concatenation with ^
+          /\s*\^\s*/g, ""
+      ).replaceAll( // uppercase letter after backslash
+        /\\\s*([^\s])/g,
+        (m, p1) => p1.toLocaleUpperCase()
+      )
     )
   }
 
